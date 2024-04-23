@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #output {
+            text-align: center;
+            margin-top: 20px;
+        }
+        input{
+            height: 30px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Palindrome Checker</h2>
+        <label for="inputString">Enter a string:</label>
+        <input type="text" id="inputString">
+        <button onclick="checkPalindrome()">Check</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function isPalindrome(str) {
+            str = str.toLowerCase().replace(/[^a-z0-9]/g, ''); // Convert to lowercase and remove non-alphanumeric characters
+
+            let left = 0;
+            let right = str.length - 1;
+
+            while (left < right) {
+                if (str[left] !== str[right]) {
+                    return false;
+                }
+                left++;
+                right--;
+            }
+            return true;
+        }
+
+        function checkPalindrome() {
+            const inputString = document.getElementById('inputString').value;
+            const outputDiv = document.getElementById('output');
+
+            if (isPalindrome(inputString)) {
+                outputDiv.textContent = `"${inputString}" is a palindrome.`;
+            } else {
+                outputDiv.textContent = `"${inputString}" is not a palindrome.`;
+            }
+        }
+    </script>
+</body>
+</html>

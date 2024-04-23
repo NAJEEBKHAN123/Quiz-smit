@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missing Number Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #output {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Missing Number Finder</h2>
+        <p>Series of numbers: 11, 12, 14, 15, 16, 18, 19, 20</p>
+        <button onclick="findMissingNumber()">Find Missing Number</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function findMissingNumber() {
+            const series = [11, 12, 14, 15, 16, 18, 19, 20];
+            let missingNumber = null;
+
+            for (let i = 0; i < series.length - 1; i++) {
+                if (series[i + 1] - series[i] !== 1) {
+                    missingNumber = series[i] + 1;
+                    break;
+                }
+            }
+
+            if (missingNumber !== null) {
+                document.getElementById('output').textContent = `Missing number: ${missingNumber}`;
+            } else {
+                document.getElementById('output').textContent = 'No missing number found.';
+            }
+        }
+    </script>
+</body>
+</html>

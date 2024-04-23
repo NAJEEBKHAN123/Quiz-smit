@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimum and Maximum Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #output {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Minimum and Maximum Finder</h2>
+        <label for="numberList">Enter numbers separated by commas:</label>
+        <input type="text" id="numberList">
+        <button onclick="findMinMax()">Find Min and Max</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function findMinMax() {
+            const inputList = document.getElementById('numberList').value;
+            const numbers = inputList.split(',').map(Number);
+
+            if (numbers.some(isNaN)) {
+                document.getElementById('output').textContent = 'Invalid input. Please enter numbers separated by commas.';
+                return;
+            }
+
+            let min = numbers[0];
+            let max = numbers[0];
+
+            for (let i = 1; i < numbers.length; i++) {
+                if (numbers[i] < min) {
+                    min = numbers[i];
+                } else if (numbers[i] > max) {
+                    max = numbers[i];
+                }
+            }
+
+            document.getElementById('output').textContent = `Minimum: ${min}, Maximum: ${max}`;
+        }
+    </script>
+</body>
+</html>
